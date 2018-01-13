@@ -1,0 +1,29 @@
+{
+  "name": "markdown-api",
+  "version": "0.0.1",
+  "description": "A Node library to convert Markdown to usable javascript objects, just like you would with a REST request.",
+  "main": "webpack.config.js",
+  "scripts": {
+    "start": "npm run build && node dist/bundle.js",
+    "build": "rollup src/markdownReader.js -o dist/bundle.js --f cjs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ralph Broers",
+  "license": "MIT",
+  "devDependencies": {
+    "rollup": "^0.53.4"
+  },
+  "dependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/Reefstah/markdown-api.git"
+  },
+  "keywords": [
+    "markdown",
+    "api"
+  ],
+  "bugs": {
+    "url": "https://github.com/Reefstah/markdown-api/issues"
+  },
+  "homepage": "https://github.com/Reefstah/markdown-api#readme"
+}
