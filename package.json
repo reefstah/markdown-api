@@ -16,14 +16,14 @@
   "dependencies": {},
   "repository": {
     "type": "git",
-    "url": "git+ssh://git@github.com/Reefstah/markdown-api.git"
+    "url": "git+ssh://git@github.com/reefstah/markdown-api.git"
   },
   "keywords": [
     "markdown",
     "api"
   ],
   "bugs": {
-    "url": "https://github.com/Reefstah/markdown-api/issues"
+    "url": "https://github.com/reefstah/markdown-api/issues"
   },
-  "homepage": "https://github.com/Reefstah/markdown-api#readme"
+  "homepage": "https://github.com/reefstah/markdown-api#readme"
 }

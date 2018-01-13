@@ -11,5 +11,5 @@ Read more about this philosophy here:
 - <a href="https://jamstack.org/">https://jamstack.org/</a>
 - <a href="http://www.writethedocs.org/guide/">http://www.writethedocs.org/guide/</a>
 
-# How to run
+## How to run
 `npm start`
