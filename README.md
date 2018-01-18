@@ -1,5 +1,6 @@
 # Markdown as an API
 A Node library to convert Markdown to usable javascript objects, just like you would with a REST request.
+Ideally used in combination with server side rendering of SPA's to generate static websites.
 
 ## Philosophy
 With minimal effort markdown is easy to understand and writable for everyone.
@@ -10,6 +11,3 @@ Read more about this philosophy here:
 
 - <a href="https://jamstack.org/">https://jamstack.org/</a>
 - <a href="http://www.writethedocs.org/guide/">http://www.writethedocs.org/guide/</a>
-
-## How to run
-`npm start`

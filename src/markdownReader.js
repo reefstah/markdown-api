@@ -7,9 +7,7 @@ class MarkdownReader {
         this.filePath = path.join(__dirname, '../src/example.md');
         this.document = [];
     }
-
-
-
+    
     read() {
         fs.readFile(this.filePath, {encoding: 'utf-8'}, function(err,data){
             if (!err) {
