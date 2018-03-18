@@ -21,8 +21,9 @@ export class DecayingObservable {
                         },
                         e => obs.error(e),
                         () => {
+
                             for (const decayingStack of decayStack(stack))
-                                obs.next(decayingStack.join('\n'));
+                                obs.next(decayingStack.join('\n') + '\n');
 
                             obs.complete();
                         }
