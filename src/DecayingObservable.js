@@ -14,7 +14,7 @@ export class DecayingObservable {
                             stack.push(line);
 
                             if (stack.length === STACK_SIZE) {
-                                obs.next(stack);
+                                obs.next(stack.join('\n'));
                                 stack.shift();
                             }
 
@@ -22,7 +22,7 @@ export class DecayingObservable {
                         e => obs.error(e),
                         () => {
                             for (const decayingStack of decayStack(stack))
-                                obs.next(decayingStack);
+                                obs.next(decayingStack.join('\n'));
 
                             obs.complete();
                         }

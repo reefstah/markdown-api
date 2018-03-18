@@ -1,7 +1,12 @@
-import {FileObservable} from "./FileObservable";
-
 import path from 'path';
+import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/concatAll';
+import 'rxjs/add/operator/do';
+
+import {FileObservable} from "./FileObservable";
 import {DecayingObservable} from "./DecayingObservable";
+
+import {HeaderParser} from "./parser/header";
 
 export class MarkdownReader {
 
@@ -16,7 +21,9 @@ export class MarkdownReader {
 
     read() {
         return DecayingObservable
-            .from(this.obs, this.STACK_SIZE);
+            .from(this.obs, this.STACK_SIZE)
+            .map(stack => new HeaderParser().parse(stack))
+            .concatAll()
     }
 }
 
