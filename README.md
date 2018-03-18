@@ -9,5 +9,5 @@ Instead of providing a CMS we should aim to treat content as code.
 As an important bonus your site can be statically generated, which comes with it's own benefits.
 Read more about this philosophy here:
 
-- <a href="https://jamstack.org/">https://jamstack.org/</a>
-- <a href="http://www.writethedocs.org/guide/">http://www.writethedocs.org/guide/</a>
+- [https://jamstack.org/](https://jamstack.org/)
+- [http://www.writethedocs.org/guide/](http://www.writethedocs.org/guide/)
