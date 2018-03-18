@@ -1,35 +1,30 @@
-import fs from 'fs';
+import {FileObservable} from "./FileObservable";
+
 import path from 'path';
+import {DecayingObservable} from "./DecayingObservable";
 
-class MarkdownReader {
+export class MarkdownReader {
 
-    constructor() {
-        this.filePath = path.join(__dirname, '../src/example.md');
-        this.document = [];
+    constructor(obs) {
+        this.obs = obs;
+        this.STACK_SIZE = 50;
     }
-    
+
+    static fromFile(filePath) {
+        return new MarkdownReader(FileObservable.from(filePath));
+    }
+
     read() {
-        fs.readFile(this.filePath, {encoding: 'utf-8'}, function(err,data){
-            if (!err) {
-
-                let name = 'paragraph';
-                let buffer;
-
-                data
-                    //.split('\n')
-                    .split('')
-                    .forEach(char => {
-                        console.log(char);
-
-
-                    })
-
-
-            } else {
-                console.log(err);
-            }
-        });
+        return DecayingObservable
+            .from(this.obs, this.STACK_SIZE);
     }
 }
 
-new MarkdownReader().read();
+MarkdownReader
+    .fromFile(path.join(__dirname, '../README.md'))
+    .read()
+    .subscribe(
+        stack => console.log(stack),
+        e => console.log(e),
+        () => console.log('success')
+    );
