@@ -3,26 +3,26 @@ import {Observable} from 'rxjs/Observable';
 import 'rxjs/add/observable/empty';
 import 'rxjs/add/observable/of';
 
-
-export class HeaderParser {
+export class ParagraphParser {
 
     constructor() {
-        this.regEx = /^#[ \t]+(.+?)[ \t]*#*\n+/g;
+        this.regEx = /^.*(?:\n(?!\n).*)*/
     }
 
     parse(text) {
         const result = this.regEx.exec(text);
-        return result ? Observable.of(new Header(result[1])) : Observable.empty();
+        //console.log(result);
+        return result ? Observable.of(new Paragraph(result[0])) : Observable.empty();
     }
 }
 
-export class Header {
+export class Paragraph {
 
     constructor(text) {
         this.text = text;
     }
 
     get() {
-        return {header: this.text}
+        return {paragraph: this.text};
     }
 }

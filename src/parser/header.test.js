@@ -3,12 +3,12 @@ import 'rxjs/add/operator/toPromise';
 
 import {HeaderParser} from './header';
 
-test('foo', t => {
+test('happyFlow', t => {
 
     return new HeaderParser()
         .parse('# markdown \n')
         .toPromise()
         .then(result => {
-            t.is(result[1], 'markdown');
+            t.deepEqual(result.get(), {header: 'markdown'});
         });
 });
