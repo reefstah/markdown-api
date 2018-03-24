@@ -5,11 +5,11 @@ import 'rxjs/add/operator/concatAll';
 import 'rxjs/add/operator/reduce';
 import 'rxjs/add/observable/of';
 
-import {FileObservable} from "./FileObservable";
-import {DecayingObservable} from "./DecayingObservable";
+import {FileObservable} from "./file_observable";
+import {DecayingObservable} from "./decaying_observable";
 
 import {HeaderParser} from "./parser/header";
-import {CodeSpanParser} from "./parser/codeSpan";
+import {CodeSpanParser} from "./parser/code_span";
 import {Paragraph, ParagraphParser} from "./parser/paragraph";
 
 export class MarkdownReader {

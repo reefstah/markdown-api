@@ -5,7 +5,7 @@
   "main": "webpack.config.js",
   "scripts": {
     "start": "npm run build && node dist/bundle.js",
-    "build": "rollup src/markdownReader.js -o dist/bundle.js --f cjs",
+    "build": "rollup src/markdown_reader.js -o dist/bundle.js --f cjs",
     "test": "ava"
   },
   "ava": {

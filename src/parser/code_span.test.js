@@ -1,7 +1,7 @@
 import test from 'ava';
 import 'rxjs/add/operator/toPromise';
 
-import {CodeSpanParser} from './codeSpan';
+import {CodeSpanParser} from './code_span';
 
 test('happyFlow', t => {
 

@@ -5,7 +5,7 @@ import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/do';
 
 
-import {MarkdownReader} from "./markdownReader";
+import {MarkdownReader} from "./markdown_reader";
 
 test('happyFlow', t => {
 
