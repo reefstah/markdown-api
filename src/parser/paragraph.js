@@ -11,7 +11,6 @@ export class ParagraphParser {
 
     parse(text) {
         const result = this.regEx.exec(text);
-        //console.log(result);
         return result ? Observable.of(new Paragraph(result[0])) : Observable.empty();
     }
 }

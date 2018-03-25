@@ -14,4 +14,7 @@ test('happyFlow', t => {
         .read()
         .do(console.log)
         .toPromise()
+        .then(() => {
+            return t.pass();
+        });
 });
