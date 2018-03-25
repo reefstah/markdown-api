@@ -7,7 +7,7 @@ import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/distinctUntilChanged';
 
 import {FileObservable} from "./file_observable";
-import {DecayingObservable} from "./decaying_observable";
+import {decayCount} from "./operator/decay_count";
 
 import {HeaderParser} from "./parser/header";
 import {CodeSpanParser} from "./parser/code_span";
@@ -32,8 +32,11 @@ export class MarkdownReader {
     }
 
     read() {
-        return DecayingObservable
-            .from(this.obs, this.STACK_SIZE)
+        return this.obs
+            .pipe(
+                decayCount(this.STACK_SIZE)
+            )
+            .map(stack => stack.join('\n'))
             .filter(isNotBlankLine)
             .map(stack => this.match(stack))
             .concatAll()
