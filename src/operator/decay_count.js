@@ -12,22 +12,22 @@ export function decayCount(bufferSize) {
 
         if (!Number.isInteger(bufferSize)) subscriber.error(new Error(`Size param in decay operator should be a number`));
 
-        let stack = [];
+        let queue = [];
 
         return source.subscribe(line => {
 
-                stack.push(line);
+                queue.push(line);
 
-                if (stack.length === bufferSize) {
-                    subscriber.next(stack);
-                    stack.shift();
+                if (queue.length === bufferSize) {
+                    subscriber.next(queue);
+                    queue.shift();
                 }
 
             },
             e => subscriber.error(e),
             () => {
 
-                for (const decayingStack of decayStack(stack))
+                for (const decayingStack of decayQueue(queue))
                     subscriber.next(decayingStack);
 
                 subscriber.complete();
@@ -36,11 +36,11 @@ export function decayCount(bufferSize) {
     });
 }
 
-function* decayStack(stack) {
-    let decayingStack = stack;
+function* decayQueue(queue) {
+    let decayingQueue = queue;
 
-    while (decayingStack.length !== 0) {
-        yield decayingStack;
-        decayingStack.shift();
+    while (decayingQueue.length !== 0) {
+        yield decayingQueue;
+        decayingQueue.shift();
     }
 }
