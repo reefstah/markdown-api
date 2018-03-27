@@ -7,19 +7,20 @@ import 'rxjs/add/observable/of';
 export class HeaderParser {
 
     constructor() {
-        this.regEx = /^#[ \t]+(.+?)[ \t]*#*\n+/g;
+        this.regEx = /^(#{1,6})[ \t]*(.+?)[ \t]*#*\n+/gm;
     }
 
     parse(text) {
         const result = this.regEx.exec(text);
-        return result ? Observable.of(new Header(result[1])) : Observable.empty();
+        return result ? Observable.of(new Header(result[1].length, result[2])) : Observable.empty();
     }
 }
 
 export class Header {
 
-    constructor(text) {
+    constructor(value, text) {
         this.text = text;
+        this.value = value;
     }
 
     get() {
