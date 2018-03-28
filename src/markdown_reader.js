@@ -6,6 +6,9 @@ import 'rxjs/add/operator/reduce';
 import 'rxjs/add/operator/filter';
 import 'rxjs/add/operator/distinctUntilChanged';
 
+import 'rxjs/add/observable/from';
+
+
 import {FileObservable} from "./file_observable";
 import {decayCount} from "./operator/decay_count";
 
@@ -13,6 +16,7 @@ import {HeaderParser} from "./parser/header";
 import {CodeSpanParser} from "./parser/code_span";
 import {Paragraph, ParagraphParser} from "./parser/paragraph";
 import {isNotBlankLine} from "./parser/blank_line";
+
 import {Root} from "./format/root";
 
 export class MarkdownReader {
@@ -30,6 +34,11 @@ export class MarkdownReader {
 
     static fromFile(filePath) {
         return new MarkdownReader(FileObservable.from(filePath));
+    }
+
+    static from(text) {
+        const obs = Observable.from(text.split('\n'));
+        return new MarkdownReader(obs);
     }
 
     read() {
