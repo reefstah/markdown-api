@@ -23,7 +23,7 @@ export class Header {
         this.value = value;
     }
 
-    get() {
-        return {header: this.text}
+    static get name() {
+        return 'header';
     }
 }

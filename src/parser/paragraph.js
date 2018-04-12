@@ -21,7 +21,7 @@ export class Paragraph {
         this.text = text;
     }
 
-    get() {
-        return {paragraph: this.text};
+    static get name() {
+        return 'paragraph';
     }
 }
