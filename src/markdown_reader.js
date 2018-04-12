@@ -17,7 +17,6 @@ import {CodeSpanParser} from "./parser/code_span";
 import {Paragraph, ParagraphParser} from "./parser/paragraph";
 import {isNotBlankLine} from "./parser/blank_line";
 
-import {Root} from "./format/root";
 
 export class MarkdownReader {
 
@@ -51,8 +50,6 @@ export class MarkdownReader {
             .map(stack => this.match(stack))
             .concatAll()
             .distinctUntilChanged((markdown1, markdown2) => markdown1.text.includes(markdown2.text))
-            .reduce((acc, markup) => acc.add(markup), new Root())
-            .map(section => section.root())
     }
 
     match(text) {

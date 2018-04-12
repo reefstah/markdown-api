@@ -29,6 +29,6 @@ test('happyFlow', t => {
         .parse(HIPSTER_IMPSUM_TEXT)
         .toPromise()
         .then(result => {
-            t.deepEqual(result.get(), {paragraph: HIPSTER_IPSUM_PARAGRAPH});
+            t.deepEqual(result.text, HIPSTER_IPSUM_PARAGRAPH);
         });
 });

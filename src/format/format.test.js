@@ -2,6 +2,7 @@ import test from 'ava';
 
 import 'rxjs/add/operator/do';
 import 'rxjs/add/operator/toPromise';
+import 'rxjs/add/operator/toArray';
 
 import {Format} from "./format";
 
@@ -10,9 +11,11 @@ test('happyFlow', t => {
 
     return new Format(format)
         .obs()
-        .do(console.log)
+        .toArray()
         .toPromise()
+        .then(result => t.deepEqual(result, segments));
 });
+
 
 const segments = [
     {path: ['title'], type: 'header'},
@@ -22,6 +25,7 @@ const segments = [
     {path: ['nested', 'content', 'summary'], type: 'paragraph'},
     {path: ['nested', 'content', 'conclusion'], type: 'paragraph'}
 ];
+
 
 const format = {
     title: 'header',
@@ -38,6 +42,7 @@ const format = {
     }
 };
 
+
 const markdown = "# News Article" +
     "" +
     "Some pargraph text 1" +
@@ -49,6 +54,7 @@ const markdown = "# News Article" +
     "Summmary text please read paragraph" +
     "" +
     "Prelimary conclusion paragraph";
+
 
 const result = {
     title: 'News Article',

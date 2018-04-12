@@ -9,6 +9,6 @@ test('happyFlow', t => {
         .parse('# markdown \n')
         .toPromise()
         .then(result => {
-            t.deepEqual(result.get(), {header: 'markdown'});
+            t.deepEqual(result.text, 'markdown');
         });
 });

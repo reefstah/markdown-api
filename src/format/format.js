@@ -41,7 +41,7 @@ export class Format {
             else if (value.type) {
                 const count = value.count ? value.count : 1;
                 for (let i = 0; i < count; i++) {
-                    yield {path: path.concat([key]), type: value};
+                    yield {path: path.concat([key]), type: value.type};
                 }
             }
 
