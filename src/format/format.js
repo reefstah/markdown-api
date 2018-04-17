@@ -33,16 +33,19 @@ export class Format {
             [key, value] = entry;
 
 
-            if (this.markdownElementNames.includes(value)) yield {
-                path: path.concat([key]),
-                type: value
-            };
+            if (this.markdownElementNames.includes(value))
+                yield {
+                    path: path.concat([key]),
+                    type: value
+                };
 
             else if (value.type) {
                 const count = value.count ? value.count : 1;
-                for (let i = 0; i < count; i++) {
-                    yield {path: path.concat([key]), type: value.type};
-                }
+                for (let i = 0; i < count; i++)
+                    yield {
+                        path: path.concat([key]),
+                        type: value.type
+                    };
             }
 
             else for (const i of this.toPath(value, path.concat([key]))) yield i;

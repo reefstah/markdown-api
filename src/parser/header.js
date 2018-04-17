@@ -26,4 +26,8 @@ export class Header {
     static get name() {
         return 'header';
     }
+
+    get name() {
+        return Header.name;
+    }
 }

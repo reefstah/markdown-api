@@ -24,4 +24,8 @@ export class Paragraph {
     static get name() {
         return 'paragraph';
     }
+
+    get name() {
+        return Paragraph.name;
+    }
 }
