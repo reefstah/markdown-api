@@ -90,7 +90,7 @@ export class MarkdownReader {
 
         if (!current[lastProperty])
             current[lastProperty] = text;
-        else if (current[lastProperty] && current[lastProperty].length)
+        else if (current[lastProperty] && Array.isArray(current[lastProperty]))
             current[lastProperty].push(text);
         else
             current[lastProperty] = [current[lastProperty], text];
