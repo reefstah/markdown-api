@@ -7,7 +7,7 @@ import 'rxjs/add/observable/of';
 export class HeaderParser {
 
     constructor() {
-        this.regEx = /^(#{1,6})[ \t]*(.+?)[ \t]*#*\n+/gm;
+        this.regEx = /^(#{1,6})[ \t]*(.+?)[ \t]*#*\n+/;
     }
 
     parse(text) {

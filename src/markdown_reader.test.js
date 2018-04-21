@@ -33,6 +33,7 @@ test('happyFlow', t => {
         });
 });
 
+
 test('arrayResult', t => {
 
     const ARRAY_HIPSTER_IMPSUM_TEXT = "" +
@@ -60,6 +61,49 @@ test('arrayResult', t => {
 
     return MarkdownReader
         .from(ARRAY_HIPSTER_IMPSUM_TEXT, FORMAT)
+        .read()
+        .toPromise()
+        .then(result => {
+            return t.deepEqual(result, RESULT);
+        });
+});
+
+
+test('objectResult', t => {
+
+    const OBJECT_HIPSTER_IMPSUM_TEXT = "" +
+        "# Mission\n" +
+        "## Objectives\n" +
+        "explanatory text\n\n" +
+        "## Extra\n" +
+        "additional text";
+
+    const FORMAT = {
+        mission: 'header',
+        objective: {
+            name: 'header',
+            text: 'paragraph',
+            extra: {
+                name: 'header',
+                text: 'paragraph'
+            }
+        }
+    };
+
+    const RESULT = {
+        mission: 'Mission',
+        objective: {
+            name: 'Objectives',
+            text: 'explanatory text',
+            extra: {
+                name: 'Extra',
+                text: 'additional text'
+            }
+        }
+    };
+
+    return MarkdownReader
+        .from(OBJECT_HIPSTER_IMPSUM_TEXT, FORMAT)
         .read()
         .toPromise()
         .then(result => {

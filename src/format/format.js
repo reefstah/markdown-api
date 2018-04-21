@@ -25,13 +25,7 @@ export class Format {
 
     * toPath(format, path) {
 
-        for (let entry of Object.entries(format)) {
-
-            let key;
-            let value;
-
-            [key, value] = entry;
-
+        for (const [key, value] of Object.entries(format)) {
 
             if (this.markdownElementNames.includes(value))
                 yield {
