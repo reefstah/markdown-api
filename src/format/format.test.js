@@ -41,32 +41,3 @@ const format = {
         }
     }
 };
-
-
-const markdown = "# News Article" +
-    "" +
-    "Some pargraph text 1" +
-    "" +
-    "Second paragraph 2" +
-    "" +
-    "## Sub management Article" +
-    "" +
-    "Summmary text please read paragraph" +
-    "" +
-    "Prelimary conclusion paragraph";
-
-
-const result = {
-    title: 'News Article',
-    content: [
-        'Some pargraph text 1',
-        'Second paragraph 2'
-    ],
-    nested: {
-        title: 'Sub management Article',
-        content: {
-            summary: 'Summmary text please read paragraph',
-            conclusion: 'Prelimary conclusion paragraph'
-        }
-    }
-};
