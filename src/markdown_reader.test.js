@@ -111,3 +111,71 @@ test('objectResult', t => {
         });
 });
 
+test('objectArrayResult', t => {
+
+    const OBJECT_ARRAY_IMPSUM_TEXT = "" +
+        "# Article One \n" +
+        "paragraph 1\n\n" +
+        "paragraph 2\n\n" +
+        "paragraph 3\n\n" +
+        "# Article Two \n" +
+        "paragraph 1\n\n" +
+        "paragraph 2\n\n" +
+        "paragraph 3\n\n" +
+        "# Article Three \n" +
+        "paragraph 1\n\n" +
+        "paragraph 2\n\n" +
+        "paragraph 3\n\n";
+
+    const FORMAT = {
+        articles: {
+            type: 'object',
+            count: 3,
+            format: {
+                title: 'header',
+                paragraphs: {
+                    type: 'paragraph',
+                    count: 3
+                }
+            }
+        }
+    };
+
+    const RESULT = {
+        articles: [
+            {
+                title: 'Article One',
+                paragraphs: [
+                    'paragraph 1',
+                    'paragraph 2',
+                    'paragraph 3'
+                ]
+            },
+            {
+                title: 'Article Two',
+                paragraphs: [
+                    'paragraph 1',
+                    'paragraph 2',
+                    'paragraph 3'
+                ]
+            },
+            {
+                title: 'Article Three',
+                paragraphs: [
+                    'paragraph 1',
+                    'paragraph 2',
+                    'paragraph 3'
+                ]
+            }
+        ]
+    };
+
+    return MarkdownReader
+        .from(OBJECT_ARRAY_IMPSUM_TEXT, FORMAT)
+        .read()
+        .toPromise()
+        .then(result => {
+            return t.deepEqual(result, RESULT);
+        });
+});
+

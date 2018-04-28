@@ -84,7 +84,7 @@ export class MarkdownReader {
 
 
         for (let i = 0; i < path.length - 1; i++)
-            current = current[path[i]] = current[path[i]] || {};
+            current = current[path[i]] = current[path[i]] || (Number.isInteger(path[i + 1]) ? [] : {});
 
         const lastProperty = path[path.length - 1];
 
