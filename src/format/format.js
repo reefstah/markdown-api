@@ -33,7 +33,7 @@ export class Format {
                     type: value
                 };
 
-            else if (value.type) {
+            else if (value.type && this.markdownElementNames.includes(value.type)) {
                 const count = value.count ? value.count : 1;
                 for (let i = 0; i < count; i++)
                     yield {
@@ -42,7 +42,17 @@ export class Format {
                     };
             }
 
-            else for (const i of this.toPath(value, path.concat([key]))) yield i;
+            else if (value.format && value.type === 'object') {
+                const count = value.count ? value.count : 1;
+                for (let i = 0; i < count; i++)
+                    for (const x of this.toPath(value.format, path.concat([key, i]))) yield x;
+            }
+
+            else if (value instanceof String)
+                throw new Error(`${value} is not a valid Markdown entry in given format`);
+
+            else
+                for (const x of this.toPath(value, path.concat([key]))) yield x;
         }
 
     }
