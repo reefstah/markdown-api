@@ -35,8 +35,8 @@ export class MarkdownReader {
         ];
     }
 
-    static fromFile(filePath) {
-        return new MarkdownReader(FileObservable.from(filePath));
+    static fromFile(filePath, format) {
+        return new MarkdownReader(FileObservable.from(filePath), format);
     }
 
     static from(text, format) {
