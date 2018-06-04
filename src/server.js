@@ -23,20 +23,28 @@ import {MarkdownReader} from "./markdown_reader";
 
 export class Server {
 
-    constructor(config) {
-        this.dirPath = path.resolve(config.dirPath);
+    constructor(dir, port, deep) {
+        this.dir = path.resolve(dir);
+        this.port = port;
+        this.deep = deep;
     }
 
     start() {
 
-        this.getConfigs(this.dirPath, this.dirPath, 5)
-            .do(console.log)
+        this.getConfigs(this.dir, this.dir, this.deep)
+            .do(console.info)
             .reduce(
                 (app, config) =>
                     app.get(config.path, (req, res) => this.controller(req, res, config)),
                 express()
             )
-            .subscribe(app => app.listen(9000));
+            .subscribe(
+                app => app.listen(this.port),
+                e => {
+                    throw new Error(e);
+                },
+                () => console.info(`Markdown API server running on port ${this.port}, with above paths.`)
+            );
     }
 
     controller(req, res, config) {
