@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "A Node library to convert Markdown to usable javascript objects, just like you would with a REST request.",
   "main": "webpack.config.js",
+  "bin": "./bin/markdown_api.js",
   "scripts": {
     "start": "npm run build && ./bin/markdown_api.js start ./test/repository/",
     "build": "rollup src/markdown_reader.js -o dist/client.js --f cjs && rollup src/server.js -o dist/server.js --f cjs",
